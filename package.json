@@ -1,0 +1,24 @@
+{
+  "name": "react-native-country-currency-picker",
+  "description": "",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jkganzan13/react-native-country-currency-picker.git"
+  },
+  "keywords": [],
+  "author": "jkganzan13",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jkganzan13/react-native-country-currency-picker/issues"
+  },
+  "homepage": "https://github.com/jkganzan13/react-native-country-currency-picker",
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "react-native-modal-dropdown": "^0.6.2"
+  }
+}
