@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import { View, Text, Picker, Image } from 'react-native'
+import { View, Text, Picker, Image, StyleSheet } from 'react-native'
 import ModalDropdown from 'react-native-modal-dropdown'
 import getOptions from './util'
 
@@ -11,16 +11,19 @@ class CountryCurrencyPicker extends Component {
   }
 
   renderRow = (rowData, index, isSelected) => (
-    <Image
-      style={this.props.iconStyle}
-      source={rowData.icon}
-      mode="stretch"
-    />
+    <View style={styles.row}>
+      <Image
+        style={this.props.iconStyle}
+        source={rowData.icon}
+        mode="stretch"
+      />
+      { this.props.label && <Text style={styles.rowLabel}>{rowData[this.props.label]}</Text> }
+    </View>
   )
 
-  getSelectedCurrencyIcon = value => {
+  getSelectedCurrency = value => {
     const selected = this.options.find(option => option.currency === value);
-    return selected.icon;
+    return selected;
   };
 
   render() {
@@ -30,10 +33,15 @@ class CountryCurrencyPicker extends Component {
       selectedValue,
       dropdownStyle,
       iconStyle,
+      placeholder,
+      placeholderStyle,
+      size,
     } = this.props;
-    const selectedCurrencyIcon = this.getSelectedCurrencyIcon(selectedValue);
+
+    const selectedCurrency = this.getSelectedCurrency(selectedValue);
+
     return (
-      <View style={containerStyle}>
+      <View style={[containerStyle]}>
         <ModalDropdown
           dropdownStyle={dropdownStyle}
           options={this.options}
@@ -41,10 +49,11 @@ class CountryCurrencyPicker extends Component {
           renderRow={this.renderRow}
           onSelect={onValueChange}
         >
-          <Image
-            source={selectedCurrencyIcon}
-            style={iconStyle}
-          />
+          {
+            selectedCurrency
+              ? this.renderRow(selectedCurrency)
+              : <Text style={placeholderStyle}>{placeholder}</Text>
+          }
         </ModalDropdown>
       </View>
     )
@@ -54,6 +63,7 @@ class CountryCurrencyPicker extends Component {
 CountryCurrencyPicker.propTypes = {
   containerStyle: View.propTypes.style,
   dropdownStyle: View.propTypes.style,
+  placeholderStyle: Text.propTypes.style,
   iconStyle: Image.propTypes.style,
   countries: PropTypes.array,
   onValueChange: PropTypes.func.isRequired,
@@ -61,11 +71,26 @@ CountryCurrencyPicker.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]),
+  placeholder: PropTypes.string,
+  label: PropTypes.oneOf(['country', 'currency']),
+  selectedValue: PropTypes.string,
 }
 
 CountryCurrencyPicker.defaultProps = {
   countries: [],
   size: 48,
+  placeholder: 'Please Select'
 };
 
 export default CountryCurrencyPicker;
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    alignItems: 'flex-end'
+  },
+  rowLabel: {
+    marginHorizontal: 5,
+    paddingBottom: 5,
+  }
+});
