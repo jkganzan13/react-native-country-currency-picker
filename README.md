@@ -3,7 +3,7 @@
 A country-currency picker for React-Native
 
 ## Demo
-<img src="https://github.com/jkganzan13/react-native-country-currency-picker/blob/master/docs/demo1.gif" alt="Demo 1"/>
+<img src="https://github.com/jkganzan13/react-native-country-currency-picker/blob/master/docs/demo1.gif" width = "160" height = "287.5" alt="Demo 1"/>
 
 ## Installation
 ```sh
