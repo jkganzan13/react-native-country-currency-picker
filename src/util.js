@@ -1,6 +1,8 @@
 import countries_json from './countries.json';
 import * as flags from './flags';
 
+export const country_codes = Object.keys(countries_json);
+
 const mapCountriesToImages = iconSize => (iso, index) => {
   const country = countries_json[iso];
   const icon = flags[`icons${iconSize}`][iso];
@@ -11,8 +13,6 @@ const mapCountriesToImages = iconSize => (iso, index) => {
     icon,
   }
 };
-
-const country_codes = Object.keys(countries_json);
 
 const getSelectedCountries = (countries, iconSize) => countries.map(mapCountriesToImages(iconSize));
 
