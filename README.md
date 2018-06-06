@@ -33,3 +33,5 @@ Prop                | Type            | Optional | Default   | Description
 `dropdownStyle`     | object          | Yes      |           | Style of dropdown
 `iconStyle`         | object          | Yes      |           | Style of flag icons
 `placeholderStyle`  | object          | Yes      |           | Style of placeholder text
+`rowStyle`          | object          | Yes      |           | Style of each option
+`rowLabelStyle`     | object          | Yes      |           | Style of option label

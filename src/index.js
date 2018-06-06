@@ -10,16 +10,27 @@ class CountryCurrencyPicker extends Component {
     this.options = getOptions(props.countries, props.size);
   }
 
-  renderRow = (rowData, index, isSelected) => (
-    <View style={styles.row}>
-      <Image
-        style={this.props.iconStyle}
-        source={rowData.icon}
-        mode="stretch"
-      />
-      { this.props.label && <Text style={styles.rowLabel}>{rowData[this.props.label]}</Text> }
-    </View>
-  )
+  renderRow = (rowData, index, isSelected) => {
+    const rowStyle = [styles.row, this.props.rowStyle];
+    const rowLabelStyle = [styles.rowLabel, this.props.rowLabelStyle];
+
+    return (
+      <View style={rowStyle}>
+        <Image
+          style={this.props.iconStyle}
+          source={rowData.icon}
+          mode="stretch"
+        />
+        { this.props.label && <Text style={rowLabelStyle}>{rowData[this.props.label]}</Text> }
+      </View>
+    )
+  }
+
+  renderPlaceholder = () => {
+    return (
+      <Text style={this.props.placeholderStyle}>{placeholder}</Text>
+    )
+  }
 
   getSelectedCurrency = value => {
     const selected = this.options.find(option => option.currency === value);
@@ -34,7 +45,6 @@ class CountryCurrencyPicker extends Component {
       dropdownStyle,
       iconStyle,
       placeholder,
-      placeholderStyle,
       size,
     } = this.props;
 
@@ -49,11 +59,7 @@ class CountryCurrencyPicker extends Component {
           renderRow={this.renderRow}
           onSelect={onValueChange}
         >
-          {
-            selectedCurrency
-              ? this.renderRow(selectedCurrency)
-              : <Text style={placeholderStyle}>{placeholder}</Text>
-          }
+          { selectedCurrency ? this.renderRow(selectedCurrency) : this.renderPlaceholder() }
         </ModalDropdown>
       </View>
     )
@@ -63,7 +69,9 @@ class CountryCurrencyPicker extends Component {
 CountryCurrencyPicker.propTypes = {
   containerStyle: View.propTypes.style,
   dropdownStyle: View.propTypes.style,
+  rowStyle: View.propTypes.style,
   placeholderStyle: Text.propTypes.style,
+  rowLabelStyle: Text.propTypes.style,
   iconStyle: Image.propTypes.style,
   countries: PropTypes.array,
   onValueChange: PropTypes.func.isRequired,
