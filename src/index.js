@@ -101,7 +101,6 @@ CountryCurrencyPicker.propTypes = {
   placeholderStyle: Text.propTypes.style,
   rowLabelStyle: Text.propTypes.style,
   iconStyle: Image.propTypes.style,
-  caretStyle: Image.propTypes.style,
   countries: PropTypes.array,
   onValueChange: PropTypes.func.isRequired,
   size: PropTypes.oneOfType([
