@@ -24,7 +24,8 @@ Prop                | Type            | Optional | Default   | Description
 `size`              | string/number   | Yes      | 48        | size of icons. One of `36`, `48`, `64`
 `selectedValue`     | string          | Yes      |           | Default value
 `placeholder`       | string          | Yes      | Please Select | Placeholder text to render when `selectedValue` does not exist
-`label`             | string: `country` or `currency` | Yes      | | Label to render
+`label`             | string: `country` or `currency` |      | | Label to render
+`caret`             | boolean | True      | | Show/hide caret
 
 ### Styles
 Prop                | Type            | Optional | Default   | Description
@@ -35,3 +36,4 @@ Prop                | Type            | Optional | Default   | Description
 `placeholderStyle`  | object          | Yes      |           | Style of placeholder text
 `rowStyle`          | object          | Yes      |           | Style of each option
 `rowLabelStyle`     | object          | Yes      |           | Style of option label
+`placeholderContainerStyle`     | object          | Yes      |           | Style of placeholder container
