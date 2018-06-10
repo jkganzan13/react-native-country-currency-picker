@@ -1,7 +1,7 @@
 {
   "name": "react-native-country-currency-picker",
   "description": "",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,6 +24,7 @@
   "homepage": "https://github.com/jkganzan13/react-native-country-currency-picker",
   "dependencies": {
     "prop-types": "^15.6.1",
-    "react-native-modal-dropdown": "^0.6.2"
+    "react-native-modal-dropdown": "^0.6.2",
+    "react-native-vector-icons": "^4.6.0"
   }
 }
